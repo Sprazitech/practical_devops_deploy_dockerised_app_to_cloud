@@ -58,3 +58,18 @@ three-tier-web-app.zip
 
 # MacOS system files
 .DS_Store
+
+# -----------------------------
+# Docker
+# -----------------------------
+*.tar
+docker-compose.override.yml
+docker-compose.override.yaml
+docker-compose.override.env
+
+# -----------------------------
+# OS / IDE / Editor
+# -----------------------------
+.vscode/
+.idea/
+*.swp
