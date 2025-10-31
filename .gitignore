@@ -55,3 +55,6 @@ node# Ignore all node_modules folders
 *.tar
 _modules/
 three-tier-web-app.zip
+
+# MacOS system files
+.DS_Store
