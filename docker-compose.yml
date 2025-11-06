@@ -1,3 +1,4 @@
+
 version: '3.8'
 
 services:
@@ -12,14 +13,16 @@ services:
       DB_HOST: ${DB_HOST}          # RDS endpoint
       DB_USER: ${DB_USER}          # RDS username
       DB_PASSWORD: ${DB_PASSWORD}  # RDS password
-      DB_DATABASE: ${DB_DATABASE}  # RDS database name
+      DB_NAME: ${DB_NAME}          # RDS database name
       DB_PORT: ${DB_PORT}          # usually 3306
       PORT: 4000
-    expose:
-      - "4000"                     # only available inside Docker network
+    ports:
+      - "4000:4000"
     restart: unless-stopped
+    networks:
+      - app-network
 
-  # Frontend service (React app served by Nginx inside the container)
+  # Frontend service
   web-tier:
     build:
       context: ./application-code/web-tier
@@ -28,11 +31,15 @@ services:
     depends_on:
       - app-tier
     ports:
-      - "80:80"                     # publicly accessible
+      - "80:80"
     environment:
-      - REACT_APP_BACKEND_URL=http://app-tier:4000
+      - REACT_APP_BACKEND_URL=http://44.201.12.97:4000
     restart: unless-stopped
+    networks:
+      - app-network
 
+#  Custom network definition (not “default”)
 networks:
-  default:
+  app-network:
     driver: bridge
+

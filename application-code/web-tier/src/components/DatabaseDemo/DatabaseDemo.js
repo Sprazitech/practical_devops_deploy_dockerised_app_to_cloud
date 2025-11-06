@@ -1,8 +1,9 @@
+
 import React, { Component } from 'react';
 import './DatabaseDemo.css';
 
 class DatabaseDemo extends Component {
-  backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000';
+  backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://44.201.12.97:4000';
 
   constructor(props) {
     super(props);
@@ -117,3 +118,4 @@ class DatabaseDemo extends Component {
 }
 
 export default DatabaseDemo;
+
